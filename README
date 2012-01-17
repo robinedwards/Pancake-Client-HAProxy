@@ -1,0 +1,23 @@
+Control multiple haproxy instances via http.
+
+Requests are non-blocking as they are issued by POE.
+
+Put service into maintenance mode, only returns when all connections to service have been closed so clients dont get cut off mid request.
+
+haproxy_control.pl  disable --svname $svname --pxname $pxname \
+    --service_url http://pancake.server1.com:9999/haproxy_1 \
+    --service_url http://pancake.server1.com:9999/haproxy_2 \
+    --service_url http://pancake.server1.com:9999/haproxy_3 \
+    --service_url http://pancake.server2.com:9999/haproxy_1 \
+    --service_url http://pancake.server2.com:9999/haproxy_2 \
+    --service_url http://pancake.server2.com:9999/haproxy_3
+
+Re-enable a service.
+
+haproxy_control.pl  disable --svname $svname --pxname $pxname \
+    --service_url http://pancake.server1.com:9999/haproxy_1 \
+    --service_url http://pancake.server1.com:9999/haproxy_2 \
+    --service_url http://pancake.server1.com:9999/haproxy_3 \
+    --service_url http://pancake.server2.com:9999/haproxy_1 \
+    --service_url http://pancake.server2.com:9999/haproxy_2 \
+    --service_url http://pancake.server2.com:9999/haproxy_3
